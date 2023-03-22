@@ -73,8 +73,12 @@ void test_1542() {
 }
 int main(){
     string s("hello world");
-    cout<<debug_rep(&s)<<endl;
-
-
+    const string *sp=&s;
+    char a[]="hello wensir";
+    cout<<debug_rep(a)<<endl;
+    int i=0;double  d=3.14;
+    foo(i);
+//    print(cout,i,s,42);
+    errorMsg(cerr,4,"hello");
     return 0;
 }

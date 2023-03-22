@@ -21,6 +21,8 @@ public:
     std::string  & operator[](std::size_t n){return elements[n];}
     const std::string & operator[](std::size_t n) const {return elements[n];}
 
+    template<class ...Args>
+    void emplace_back(Args&&...);
 
 private:
     static std::allocator<std::string>alloc;
@@ -85,6 +87,13 @@ StrVec &StrVec::operator=(std::initializer_list<std::string> il) {
     elements = data.first;
     first_free=cap=data.second;
     return *this;
+}
+
+template<class... Args>
+inline
+void StrVec::emplace_back(Args &&...args) {
+    chk_n_alloc();
+    alloc.construct(first_free++, std::forward<Args>(args)...);
 }
 
 #endif //OFFER_STRVEC_H

@@ -63,6 +63,7 @@ string debug_rep(const T &t){
     ret<<t;
     return ret.str();
 }
+
 template <typename T>
 string debug_rep(T*p){
     ostringstream ret;
@@ -74,9 +75,38 @@ string debug_rep(T*p){
     return ret.str();
 }
 
+template <typename T>string debug_rep(T*p);
+string debug_rep(const string &s){
+    return '"'+s+'"';
+}
+string debug_rep(char *p){
+    return debug_rep(string(p));
+}
+string debug_rep(const char *p){
+    return debug_rep(string(p));
+}
+//可变参数模板
+template<typename T,typename...Args >
+void foo(const T &t,const Args...rest){
+    cout<<sizeof...(Args)<<endl;
+    cout<<sizeof...(rest)<<endl;
+}
 
+template<typename T>
+ostream &print(ostream &os,const T&t){
+    return os<<t;
+}
 
+template<typename T,typename ...Args>
+ostream &print(ostream &os,const T &t,const Args...rest){
+    os<<t<<",";
+    return print(os,rest...);
+}
 
+template<typename ...Args>
+ostream &errorMsg(ostream &os,const Args&...rest){
+    return print(os, debug_rep(rest)...);
+}
 
 
 
