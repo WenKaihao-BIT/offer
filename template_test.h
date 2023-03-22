@@ -39,12 +39,6 @@ int compare(const T&v1,const T&v2,F f=F()){
     if(f(v2,v1))return 1;
     return 0;
 }
-//template<typename C>
-//void print(const C &c){
-//    for(typename C::size_type i=0;i<c.size();i++)
-//        cout<<c.at(i)<<" ";
-//    cout<<endl;
-//}
 template<typename C>
 void print(const C &c){
     for(auto i=c.begin();i!=c.end();i++)
@@ -52,8 +46,33 @@ void print(const C &c){
     cout<<endl;
 
 }
+void f(int &v1,int &v2){
+   cout<<++v1<<' '<<++v2 <<endl;
+}
+void g(int &&i,int & j){
+    cout<<i<<" "<<j<<endl;
+}
+template<typename  F,typename T1,typename T2>
+void flip2(F f,T1 &&t1,T2 &&t2){
+    f(t2,t1);
+}
 
-
+template<typename T>
+string debug_rep(const T &t){
+    ostringstream ret;
+    ret<<t;
+    return ret.str();
+}
+template <typename T>
+string debug_rep(T*p){
+    ostringstream ret;
+    ret << "pointer: "<<p<<endl;
+    if(p)
+        ret<<" "<<debug_rep(*p);
+    else
+        ret<<" null pointer";
+    return ret.str();
+}
 
 
 

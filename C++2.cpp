@@ -72,15 +72,8 @@ void test_1542() {
     print(cout, a.eval(file_text));
 }
 int main(){
-    int ia[] = {0,1,2,3,4,5,6,7,8,9};
-    vector<long>vi={0,1,2,3,4,5};
-    list<const char *>w={"now","is","the","time"};
-    Blob<int>a1(begin(ia),end(ia));
-    Blob<int>a2(vi.begin(),vi.end());
-    Blob<string>a3(w.begin(),w.end());
-    for(auto p=a3.begin();p!=a3.end();p++)
-        cout<<*p<<" ";
-    cout<<endl;
+    string s("hello world");
+    cout<<debug_rep(&s)<<endl;
 
 
     return 0;
