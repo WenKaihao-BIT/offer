@@ -4,6 +4,8 @@
 
 #ifndef OFFER_TEMPLATE_TEST_H
 #define OFFER_TEMPLATE_TEST_H
+
+#include <cstring>
 #include "iostream"
 #include "string"
 #include "vector"
@@ -39,6 +41,20 @@ int compare(const T&v1,const T&v2,F f=F()){
     if(f(v2,v1))return 1;
     return 0;
 }
+
+template<unsigned N,unsigned M>
+int compare(const char (&p1)[N],const char (&p2)[M]){
+    return strcmp(p1,p2);
+}
+
+template<typename T> int compare(const T&,const T&);
+//compare 的特殊版本
+template<>
+int compare(const char* const&p1,const char * const &p2){
+    return strcmp(p1,p2);
+}
+
+
 template<typename C>
 void print(const C &c){
     for(auto i=c.begin();i!=c.end();i++)

@@ -71,15 +71,26 @@ void test_1542() {
     Query a = Query("is")|Query("her");
     print(cout, a.eval(file_text));
 }
+void fun(const int &num){
+    cout<<num<<endl;
+}
 int main(){
-    string s("hello world");
-    const string *sp=&s;
-    char a[]="hello wensir";
-    cout<<debug_rep(a)<<endl;
+//    string s("hello world");
+//    const string *sp=&s;
+//    char a[]="hello wensir";
+//    cout<<debug_rep(a)<<endl;
     int i=0;double  d=3.14;
-    foo(i);
+//    foo(i);
 //    print(cout,i,s,42);
-    errorMsg(cerr,4,"hello");
-    cout<<"你的名字"<<endl;
+//    errorMsg(cerr,4,"hello");
+//    cout<<"你的名字"<<endl;
+    StrVec a;
+    cout<<a.size()<<' '<<a.capacity()<<endl;
+    a.push_back("hello");
+    cout<<a.size()<<' '<<a.capacity()<<endl;
+    a.big();
+    cout<<a.size()<<' '<<a.capacity()<<endl;
+    a.emplace_back(12,'c');
+    cout<<*(a.end()-1)<<endl;
     return 0;
 }

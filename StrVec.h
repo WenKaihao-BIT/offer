@@ -6,6 +6,7 @@
 #define OFFER_STRVEC_H
 #include "iostream"
 #include "memory"
+#include "utility"
 class StrVec{
 public:
     StrVec():elements(nullptr),first_free(nullptr),cap(nullptr){}
@@ -23,6 +24,7 @@ public:
 
     template<class ...Args>
     void emplace_back(Args&&...);
+    void big(){chk_n_alloc();}
 
 private:
     static std::allocator<std::string>alloc;
@@ -74,7 +76,7 @@ void StrVec::reallocate() {
     auto dest = newdata;
     auto elem =elements;
     for(size_t i=0;i!=size();++i)
-        alloc.construct(dest++,std::move(*elements++));
+        alloc.construct(dest++,std::move(*elem++));
     free();
     elements=newdata;
     first_free=dest;
