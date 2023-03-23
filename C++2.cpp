@@ -80,5 +80,6 @@ int main(){
     foo(i);
 //    print(cout,i,s,42);
     errorMsg(cerr,4,"hello");
+    cout<<"你的名字"<<endl;
     return 0;
 }
