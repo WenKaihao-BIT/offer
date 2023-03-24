@@ -95,11 +95,18 @@ template <typename T>string debug_rep(T*p);
 string debug_rep(const string &s){
     return '"'+s+'"';
 }
-string debug_rep(char *p){
+//string debug_rep(char *p){
+//    return debug_rep(string(p));
+//}
+//string debug_rep(const char *p){
+//    return debug_rep(string(p));
+//}
+//特例化版本
+template<>string debug_rep(char *p){
     return debug_rep(string(p));
 }
-string debug_rep(const char *p){
-    return debug_rep(string(p));
+template<>string debug_rep(const char*cp){
+    return debug_rep(string(cp));
 }
 //可变参数模板
 template<typename T,typename...Args >

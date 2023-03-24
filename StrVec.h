@@ -24,7 +24,7 @@ public:
 
     template<class ...Args>
     void emplace_back(Args&&...);
-    void big(){chk_n_alloc();}
+
 
 private:
     static std::allocator<std::string>alloc;

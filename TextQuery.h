@@ -9,6 +9,7 @@
 #include "iostream"
 #include "vector"
 #include "QueryResult.h"
+#include "QuerResult_tuple.h"
 #include "memory"
 #include "set"
 #include "map"

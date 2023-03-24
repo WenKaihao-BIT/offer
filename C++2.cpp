@@ -6,6 +6,7 @@
 #include <functional>
 #include <map>
 #include <cassert>
+#include <unordered_set>
 #include "iostream"
 #include "Sales_data.h"
 #include "StrVec.h"
@@ -18,6 +19,7 @@
 #include "Screen.h"
 #include "Vec.h"
 #include "DebugDelete.h"
+#include "newHash.h"
 using namespace std;
 class Base{
 public:
@@ -84,6 +86,51 @@ int main() {
 //    vector<string>b={"11","22","11"};
 //    vector<double>c={1.13,2.2,1.11};
 //    cout<<check_count(b,"11")<<endl;
-    unordered_multiset<Sales_data>SDset;
+//    Sales_data data1("001-01",1,100);
+//    Sales_data data2;
+//    Sales_data data3("001-02");
+//    cout<<hex<<std::hash<string>()("001-01")<<endl;
+//    cout<<hex<<std::hash<unsigned >()(1)<<endl;
+//    cout<<hex<<std::hash<double>()(100)<<endl;
+//    unordered_multiset<Sales_data>SDset;
+//    SDset.emplace(data1);
+//    SDset.emplace("001-03",1,100);
+//    SDset.emplace(data3);
+//    for(auto item:SDset)
+//        cout<<" the hash code of "<<item.isbn()<<":\n0x"<<hex<<hash<Sales_data>()(item)<<endl;
+//    tuple<size_t,size_t,size_t>threeD;
+//    tuple<string,vector<double>,int,list<int>>
+//        someVal("constants",{3,4},42,{0,1,2,3,4,5});
+//    cout<<get<0>(someVal)<<endl;
+//    get<0>(someVal)="hello";
+//    cout<<get<0>(someVal)<<endl;
+//    auto item = make_tuple("0-999-78345-x",3,20.00);
+//    typedef decltype(item) trans;
+//    size_t sz=tuple_size<trans>::value;
+//    cout<<sz<<endl;
+//    tuple_element<1,trans>::type cnt =get<2>(item);
+//    cout<< typeid(cnt).name()<<endl;
+//    tuple<int,int,int>ThreeInt(1,2,3);
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
