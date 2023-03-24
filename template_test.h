@@ -124,11 +124,51 @@ ostream &errorMsg(ostream &os,const Args&...rest){
     return print(os, debug_rep(rest)...);
 }
 
-
-
-
-
-
+template<class T>struct remove_reference2{
+//    remove_reference2(){std::cout<<"初始模板"<<std::endl;}
+    typedef T type;
+};
+template<class T>struct remove_reference2<T&>{
+//    remove_reference2(){std::cout<<"模板1"<<std::endl;}
+    typedef T type;
+};
+template<class T>struct remove_reference2<T&&>{
+//    remove_reference2(){std::cout<<"模板2"<<std::endl;}
+    typedef T type;
+};
+template<typename T>struct Foo2{
+    Foo2(const T&t=T()):mem(t){}
+    void Bar(){cout<<"Bar"<<endl;}
+    T mem;
+};
+template<>//特例化模板
+void Foo2<int>::Bar() { //特例化成员函数
+    cout<<"Bar-int"<<endl;
+}
+//无法将C字符串匹配，因此要特例
+template<typename T>
+size_t check_count(const std::vector<T>&v,const T& target){
+    size_t count=0;
+    for(auto i=v.begin();i!=v.end();i++)
+        if(*i==target)
+            count++;
+    return count;
+}
+template<>
+size_t check_count(const std::vector<char*>&v,char* const &target){
+    size_t count=0;
+    for(auto item :v)
+        if(!strcmp(item,target))
+            count++;
+    return count;
+}
+size_t check_count(const std::vector<string>&v,char* target){
+    size_t count=0;
+    for(const auto & i : v)
+        if(i==string (target))
+            count++;
+    return count;
+}
 
 
 

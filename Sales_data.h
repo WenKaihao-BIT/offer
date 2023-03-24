@@ -6,6 +6,8 @@
 #define OFFER_SALES_DATA_H
 #include "iostream"
 #include <string>
+
+
 class  Sales_data{
 public:
     Sales_data() {std::cout<<"默认构造函数"<<std::endl;}
@@ -23,6 +25,9 @@ public:
     friend bool operator==(const Sales_data &data1,const Sales_data &data2);
     friend bool operator!=(const Sales_data &data1,const Sales_data &data2);
     Sales_data & operator=(const std::string & isbn);
+    //使用模板特例Hash
+    friend class std::hash<Sales_data>;
+
 
 //    Sales_data &
 private:
