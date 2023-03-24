@@ -6,6 +6,7 @@
 #include <functional>
 #include <map>
 #include <cassert>
+#include <unordered_set>
 #include "iostream"
 #include "Sales_data.h"
 #include "StrVec.h"
@@ -71,15 +72,41 @@ void test_1542() {
     Query a = Query("is")|Query("her");
     print(cout, a.eval(file_text));
 }
-int main(){
-    string s("hello world");
-    const string *sp=&s;
-    char a[]="hello wensir";
-    cout<<debug_rep(a)<<endl;
-    int i=0;double  d=3.14;
-    foo(i);
-//    print(cout,i,s,42);
-    errorMsg(cerr,4,"hello");
+int main() {
+//    Foo2<string>fs;
+//    fs.Bar();
+//    Foo2<int>fi;
+//    fi.Bar();
+//    vector<int>a={1,2,1,1,1};
+//    string s="11";
+//    vector<string>b={"11","22","11"};
+//    vector<double>c={1.13,2.2,1.11};
+//    cout<<check_count(b,"11")<<endl;
+    unordered_multiset<Sales_data>SDset;
 
-    return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
