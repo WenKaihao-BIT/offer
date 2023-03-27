@@ -10,7 +10,7 @@
 
 class  Sales_data{
 public:
-    Sales_data() {std::cout<<"默认构造函数"<<std::endl;}
+    Sales_data() {}
     Sales_data(const std::string &s,unsigned n,double p):bookNo(s),units_sold(n),revenue(n*p) {std::cout<<"非默认构造函数"<<std::endl;}
     Sales_data(const std::string &s):bookNo(s){}
     std::string isbn() const {return bookNo;}
