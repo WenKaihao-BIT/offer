@@ -7,6 +7,7 @@
 
 #include <fstream>
 #include <bitset>
+#include <regex>
 #include "iostream"
 #include "findbook.h"
 using namespace std;
@@ -75,4 +76,73 @@ void test_1713(){
     cout<<e.get_size()<< "题对了"<<e.score(a)<<" 题"<<endl;
 }
 /** endregion */
+/** region ## 正则化 ## */
+void test_regex(){
+    string pattern("[^c]ei");
+    cout<<pattern<<endl;
+    pattern="[[:alpha:]]*"+pattern+"[[:alpha:]]*";
+    cout<<pattern<<endl;
+    regex r(pattern);
+    smatch results;
+    string test_str="receipt freind theif receive";
+    if(regex_search(test_str,results,r))
+        cout<<results.str()<<endl;
+}
+void test_regex(int i) {
+    try {
+        regex r("[[:alnum:]]+\\.(cpp|cxx|cc)$", regex::icase);
+        smatch results;
+        string filename;
+        while (cin >> filename)
+            if (regex_search(filename, results, r))
+                cout << results.str() << endl;
+    } catch (regex_error e) {
+        cout << e.what() << "\ncode: " << e.code() << endl;
+    }
+
+}
+void test_regex2(){
+    string pattern("[^c]ei");
+    cout<<pattern<<endl;
+    pattern="[[:alpha:]]*"+pattern+"[[:alpha:]]*";
+    string s("regex2.txt"),item;
+    ifstream is(s);
+    vector<string>words;
+
+}
+/** endregion */
+/** region ## 17.15 ## */
+void test_1715(){
+    string pattern("[^c]ei");
+    cout<<pattern<<endl;
+    pattern="[[:alpha:]]*"+pattern+"[[:alpha:]]*";
+    cout<<pattern<<endl;
+    regex r(pattern);
+    smatch results;
+    string test_str;
+    while (1){
+        cout<<"Enter a word,or q to quit"<<endl;
+        cin>>test_str;
+        if(test_str=="q")
+            break;
+        if(regex_search(test_str,results,r))
+            cout<<results.str()<<endl;
+    }
+
+}
+/** endregion */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #endif //OFFER_TEST_17_H
