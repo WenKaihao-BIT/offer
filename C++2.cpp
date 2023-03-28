@@ -29,8 +29,13 @@ int main() {
 //    test_bitset();
 //    test_1713();
 //    test_regex(1);
-    test_1715();
-
+//    test_1715();
+//    test_randam();
+//    auto nums=good_randVec();
+//    for(auto it:nums)
+//        cout<<it<<endl;
+    for(int i=0;i<10;++i)
+        cout<<rand_int()<<' ';
 
 
 

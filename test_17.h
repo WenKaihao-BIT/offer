@@ -10,6 +10,7 @@
 #include <regex>
 #include "iostream"
 #include "findbook.h"
+#include "random"
 using namespace std;
 
 vector<Sales_data>build_store(const string &s){
@@ -132,12 +133,32 @@ void test_1715(){
 }
 /** endregion */
 
+/** region ## 随机数 ## */
+void test_randam(){
+    uniform_int_distribution<unsigned>u(0,9);
+    default_random_engine e;
+    for(size_t i=0;i<10;++i)
+        cout<<u(e)<<" ";
+}
+vector<unsigned >good_randVec(){
+    static default_random_engine e1;
+    static uniform_int_distribution<unsigned>u(0,9);
+    vector<unsigned >ret;
+    for(size_t i=0;i<100;++i)
+        ret.push_back(u(e1));
+    return ret;
+}
+unsigned int rand_int(long seed=-1,long min=1,long max=0){
+    static default_random_engine  e2;
+    static uniform_int_distribution<unsigned>u2(0,9999);
+    if(seed>=0)
+        e2.seed(seed);
+    if(min<=max)
+        u2=uniform_int_distribution<unsigned>(min,max);
+    return u2(e2);
 
-
-
-
-
-
+}
+/** endregion */
 
 
 
