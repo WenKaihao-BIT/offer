@@ -7,7 +7,8 @@
 #include "iostream"
 #include <string>
 
-
+class isbn_mismatch;
+/** region ## Sales_data ## */
 class  Sales_data{
 public:
     Sales_data() {}
@@ -102,7 +103,7 @@ Sales_data &Sales_data::operator+=(const Sales_data & data2) {
         return *this;
     }
     else{
-        std::cerr<<"Data must refer to the same ISBN"<<std::endl;
+        throw isbn_mismatch("error");
         return *this;
     }
 }
@@ -116,8 +117,8 @@ Sales_data operator+(const Sales_data &data1, const Sales_data & data2) {
 
 bool operator==(const Sales_data &data1, const Sales_data &data2) {
     return data1.isbn()==data2.isbn()&&
-            data1.units_sold==data2.units_sold&&
-            data1.revenue==data2.revenue;
+           data1.units_sold==data2.units_sold&&
+           data1.revenue==data2.revenue;
 }
 
 bool operator!=(const Sales_data &data1, const Sales_data &data2) {
@@ -131,5 +132,16 @@ Sales_data &Sales_data::operator=(const std::string & isbn) {
 bool compareIsbn(const Sales_data &lhs,const Sales_data &rhs){
     return lhs.isbn()<rhs.isbn();
 }
+/** endregion */
+/** region ## isbn_mismatch ## */
+class isbn_mismatch:public std::logic_error{
+public:
+    explicit isbn_mismatch(const std::string &s):
+            std::logic_error(s){}
+    isbn_mismatch(const std::string &s,const std::string &lhs,const std::string &rhs):
+            std::logic_error(s),left(lhs),right(rhs){}
+    const std::string left,right;
+};
+/** endregion */
 
 #endif //OFFER_SALES_DATA_H

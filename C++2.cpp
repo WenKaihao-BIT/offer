@@ -23,21 +23,26 @@
 #include "findbook.h"
 #include "test_17.h"
 #include "Persional_ID.h"
+#include "try_test.h"
 using namespace std;
 
+void g(){}
+void h()noexcept(noexcept(f())){f();}
+void i()noexcept(noexcept(g())){g();}
 int main() {
-//    test1704();
-//    test_bitset();
-//    test_1713();
-//    test_regex(1);
-//    test_1715();
-//    test_randam();
-//    auto nums=good_randVec();
-//    for(auto it:nums)
-//        cout<<it<<endl;
-//    normal_random();
-//    player();
-    bool_print();
+    try{
+        cout<<"f: "<<std::boolalpha<<noexcept(f())<<endl;
+        cout<<"g: "<<std::boolalpha<<noexcept(g())<<endl;
+        cout<<"h: "<<std::boolalpha<<noexcept(h())<<endl;
+        cout<<"i: "<<std::boolalpha<<noexcept(i())<<endl;
+        f();
+    }
+    catch (exception &e) {
+        cout<<"caught"<<e.what()<<endl;
+    }
+
+
+    return 0;
 }
 
 
