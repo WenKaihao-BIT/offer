@@ -6,6 +6,7 @@
 #define OFFER_TEMPLATE_TEST_H
 
 #include <cstring>
+#include <regex>
 #include "iostream"
 #include "string"
 #include "vector"
@@ -176,6 +177,58 @@ size_t check_count(const std::vector<string>&v,char* target){
             count++;
     return count;
 }
+/** region ## 正则化 ## */
+void test_region2() {
+    string file = {"receipt freind theif receive"};
+    cout << file << endl;
+    string pattern("[^c]ei");
+    pattern = "[[:alpha:]]*" + pattern + "[[:alpha:]]*";
+    regex r(pattern, regex::icase);
+    for (sregex_iterator it(file.begin(), file.end(), r), end_it; it != end_it; ++it) {
+        auto pos = it->prefix().length();
+        pos = pos > 40 ? pos - 40 : 0;
+        cout << it->prefix().str().substr(pos) << "\t>>>" << it->str() << " <<<\t" << it->suffix().str().substr(0, 40)
+             << endl;
+
+    }
+}
+void test_region3(){
+        regex r("([[:alnum:]]+)\\.(cpp|cxx|cc)$",regex::icase);
+        string filename="123.cpp";
+        smatch result;
+        if(regex_search(filename,result,r))
+            cout<<result.str(2)<<endl;
+    }
+bool valid(const smatch&m);
+void test_region4(){
+    regex phone("(\\()?(\\d{3})(\\))?([-. ])?(\\d{3})([-. ])?(\\d{4})");
+    smatch m;
+    string s;
+    while (getline(cin,s)){
+        for(sregex_iterator it(s.begin(),s.end(),phone),end_it;it!=end_it;it++)
+            if(valid(*it))
+                cout<<"valid: "<<it->str()<<endl;
+            else
+                cout<<"not valid: "<<it->str()<<endl;
+
+    }
+}
+bool valid(const smatch&m){
+    if(m[1].matched)
+        return m[3].matched&&(m[4].matched==0||m[4]==" ");
+    else
+        return !m[3].matched&&m[4].str()==m[6].str();
+}
+
+/** endregion */
+
+
+
+
+
+
+
+
 
 
 
