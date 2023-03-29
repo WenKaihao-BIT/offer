@@ -132,7 +132,6 @@ void test_1715(){
 
 }
 /** endregion */
-
 /** region ## 随机数 ## */
 void test_randam(){
     uniform_int_distribution<unsigned>u(0,9);
@@ -158,8 +157,42 @@ unsigned int rand_int(long seed=-1,long min=1,long max=0){
     return u2(e2);
 
 }
+void normal_random(){
+    default_random_engine e;
+    normal_distribution<>n(4,1.5);
+    vector<unsigned >vals(9);
+    for(size_t i=0;i!=300;++i){
+        unsigned v = lround(n(e));
+        if(v<vals.size())
+            ++vals[v];
+    }
+    for(size_t j=0;j!=vals.size();++j)
+        cout<<j<<": "<<string (vals[j],'*')<<endl;
+}
+bool play(bool i){
+    return !i;
+}
+void player(){
+    string resp;
+    default_random_engine e;
+    bernoulli_distribution b;
+    do{
+        bool first = b(e);
+        cout<<(first?"We go first":"You get to go first")<<endl;
+        cout<<((play(first))?"sorry,you lost":"congrats,you won")<<endl;
+        cout<<"play again? Enter 'yes' or 'no' "<<endl;
+    } while (cin>>resp&&resp[0]=='y');
+}
 /** endregion */
+/** region ## IO操作 ## */
+void bool_print(){
+    cout<<"default bool values: "<<true<<" "<< false
+        <<"\nalpha bool values: "<<boolalpha<< true<<" "<<false<<endl;
+    bool bool_val= false;
+    cout<<boolalpha<<bool_val<<"\t"<<noboolalpha<<true<<endl;
+}
 
+/** endregion */
 
 
 

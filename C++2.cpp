@@ -35,8 +35,10 @@ int main() {
 //    auto nums=good_randVec();
 //    for(auto it:nums)
 //        cout<<it<<endl;
-    for(int i=0;i<10;++i)
-        cout<<rand_int()<<' ';
+//    normal_random();
+//    player();
+    bool_print();
+}
 
 
 
