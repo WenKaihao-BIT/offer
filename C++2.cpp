@@ -24,24 +24,11 @@
 #include "test_17.h"
 #include "Persional_ID.h"
 #include "try_test.h"
+#include "test_18.h"
 using namespace std;
-
-void g(){}
-void h()noexcept(noexcept(f())){f();}
-void i()noexcept(noexcept(g())){g();}
 int main() {
-    try{
-        cout<<"f: "<<std::boolalpha<<noexcept(f())<<endl;
-        cout<<"g: "<<std::boolalpha<<noexcept(g())<<endl;
-        cout<<"h: "<<std::boolalpha<<noexcept(h())<<endl;
-        cout<<"i: "<<std::boolalpha<<noexcept(i())<<endl;
-        f();
-    }
-    catch (exception &e) {
-        cout<<"caught"<<e.what()<<endl;
-    }
-
-
+//    test1809();
+    cout<<sizeof(double )<<endl;
     return 0;
 }
 

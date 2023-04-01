@@ -6,8 +6,7 @@
 #define OFFER_SALES_DATA_H
 #include "iostream"
 #include <string>
-
-class isbn_mismatch;
+#include "Sales_data_error.h"
 /** region ## Sales_data ## */
 class  Sales_data{
 public:
@@ -103,8 +102,8 @@ Sales_data &Sales_data::operator+=(const Sales_data & data2) {
         return *this;
     }
     else{
-        throw isbn_mismatch("error");
-        return *this;
+        throw isbn_mismatch("wrong",isbn(),data2.isbn());
+
     }
 }
 
@@ -133,15 +132,6 @@ bool compareIsbn(const Sales_data &lhs,const Sales_data &rhs){
     return lhs.isbn()<rhs.isbn();
 }
 /** endregion */
-/** region ## isbn_mismatch ## */
-class isbn_mismatch:public std::logic_error{
-public:
-    explicit isbn_mismatch(const std::string &s):
-            std::logic_error(s){}
-    isbn_mismatch(const std::string &s,const std::string &lhs,const std::string &rhs):
-            std::logic_error(s),left(lhs),right(rhs){}
-    const std::string left,right;
-};
-/** endregion */
+
 
 #endif //OFFER_SALES_DATA_H
